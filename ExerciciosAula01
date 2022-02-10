@@ -1,0 +1,91 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ExerciciosAula01
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int OP, FormPag, PIX, Parc; //Opção, Forma de Pagamento, pix e Parcelamento
+            string Prod=""; //C# Talvez não aceite váriveis sem inicialização? perguntar p/ prof
+            double Val=0, Desc=0, Soma=0; //As vezes solicitado double? perguntar p/ prof
+            do
+            {
+                Console.WriteLine("=============== M E N U ===============");
+                Console.WriteLine("1. Nome Do Produto");
+                Console.WriteLine("2. Valor Do Produto");
+                Console.WriteLine("3. Forma De Pagamento");
+                Console.WriteLine("4. Dados Do Produto");
+                Console.WriteLine("5. Sair");
+                Console.WriteLine("=======================================");
+                Console.WriteLine("Opção:");
+
+                OP = int.Parse(Console.ReadLine());
+
+                switch (OP)
+                {
+                    case 1:
+                        Console.WriteLine("Nome Do Produto:");
+                        Prod = Console.ReadLine();
+                        Console.WriteLine("Confirmado! Produto Registrado como: " + Prod);
+                        
+                        break;
+                    case 2:
+                        Console.WriteLine("Valor Do Produto:");
+                        Val = double.Parse(Console.ReadLine());
+                        Console.WriteLine("Confirmado! Está com o valor atual de:" + Val);
+                        break;
+                    case 3:
+                        Console.WriteLine("=========== P A G A M E N T O =========");
+                        Console.WriteLine("1. A Vista");
+                        Console.WriteLine("2. PIX");
+                        Console.WriteLine("3. Parcelado");
+                        Console.WriteLine("=======================================");
+                        Console.WriteLine("Forma De Pagamento:");
+                        FormPag = int.Parse(Console.ReadLine());
+
+                        switch (FormPag) //tentanto ao maximo não usar muitos if, então sub menu com switch
+                        {
+                            case 1:
+                                Soma = Val * 0.1;
+                                Desc = Val - Soma;
+
+                                Console.WriteLine("O Valor do produto com desconto de 10% é: " + Desc);
+                                break;
+                            case 2:
+                                Console.WriteLine("Entre com a chave do PIX:");
+                                PIX = int.Parse(Console.ReadLine());
+                                Console.Write("Chave Registrada: " + PIX);
+                                break;
+                            case 3:
+                                Console.WriteLine("Deseja quantas parcelas para realizar sua compra?");
+                                Parc = int.Parse(Console.ReadLine());
+
+                                Soma = Val / Parc;
+
+                                Console.WriteLine("Sua compra ficou no total de: " + Soma);
+                                break;
+                        }
+                        break;                          
+                    case 4:
+                        Console.WriteLine("=============== D A D O S ===============");
+                        Console.WriteLine("Nome do Produto: "+ Prod);
+                        Console.WriteLine("Valor do Produto: " + Val);
+                        Console.WriteLine("Formas de Pagamento dispoviveis: \n 1. A Vista \n 2.PIX \n 3.Parcelado ");
+                        break;
+
+                }
+                Console.ReadKey(); //esperar uma tecla
+                Console.Clear(); //comando como se fosse o SYSTEM CLS de C
+            } while (OP != 5);
+            Console.WriteLine("======================================"); 
+            Console.WriteLine("Obrigado por usar nosso sistema!");
+            Console.WriteLine("======================================");
+            Console.ReadKey();
+        }
+    }
+}
